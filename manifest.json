@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "version": "0.0.1",
+  "name": "nico",
+  "description": "To make Niconico more friendly.",
+  "browser_action": {
+    "default_title": "niconico",
+    "default_popup": "index.html"
+  },
+  "content_scripts": [{
+    "matches": [
+      "http://www.nicovideo.jp/watch/*"
+    ],
+    "js": [
+      "watch.js"
+    ]
+  }],
+  "permissions": [
+    "tabs",
+    "http://www.nicovideo.jp/*"
+  ]
+}
