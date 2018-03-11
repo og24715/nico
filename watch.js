@@ -2,8 +2,16 @@ console.log('Hello.');
 
 const video = document.querySelector('#MainVideoPlayer > video');
 const watchLinks = document.querySelectorAll('a.watch');
-const videoIds = Array.prototype.map.call(watchLinks, watchLink => Number(watchLink.href.split('watch/')[1]));
-const nextVideoId = Math.max(...videoIds);
+const videoLinks = Array.prototype.map.call(watchLinks, (watchLink) => {
+  const id = watchLink.href.split('watch/')[1];
+  return {
+    id: Number(id.replace('sm', '')),
+    hasPrefixSm: id.includes('sm'),
+    link: watchLink,
+  };
+});
+const nextVideoId = Math.max(...videoLinks.map(link => link.id));
+const nextVideo = videoLinks.find(link => (link.id === nextVideoId));
 
 video.addEventListener('canplay', (e) => {
   console.log('Can play the video.');
@@ -12,5 +20,5 @@ video.addEventListener('canplay', (e) => {
 
 video.addEventListener('ended', (e) => {
   console.log('Playback completes.');
-  location = `http://www.nicovideo.jp/watch/${nextVideoId}`;
+  location = nextVideo.link;
 });
