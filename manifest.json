@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "name": "nico",
-  "description": "To make Niconico more friendly.",
+  "description": "Make Niconico to more friendly.",
   "browser_action": {
     "default_title": "niconico",
     "default_popup": "index.html"
