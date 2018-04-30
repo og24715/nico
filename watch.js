@@ -14,8 +14,10 @@ const nextVideoId = Math.max(...videoLinks.map(link => link.id));
 const nextVideo = videoLinks.find(link => (link.id === nextVideoId));
 
 video.addEventListener('canplay', (e) => {
+  const fullscreenButton = document.querySelector('button[data-title=フルスクリーン]');
   console.log('Can play the video.');
   video.play();
+  fullscreenButton.click();
 });
 
 video.addEventListener('ended', (e) => {
